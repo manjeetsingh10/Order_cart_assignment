@@ -1,5 +1,6 @@
 package com.grofers.ordercart.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +16,7 @@ import java.util.List;
 public class VehicleDto {
   private String vehicleType;
   private Integer maxWeightAllowed;
+
+  @JsonIgnore
   private List<Integer> availableSlots;
 }
