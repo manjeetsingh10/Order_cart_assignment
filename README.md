@@ -14,4 +14,40 @@ Truck capacity - 100 kg per trip
 
 Each slot can take orders with an overall max weight of 100 kg. There are no trucks available in the morning slot (6-9 hours) and there are no scooters and bikes available in the evening slot (19-23 hours). All vehicle types are available for the other two slots (9-13,16-19 hours). You can’t order more than 1 truck, 3 bikes, 2 scooters a day. Also, the vehicles’ capacity should be used optimally.
 
-<H4> MINI DOCUMENTATION <H4> 
+<H4> MINI DOCUMENTATION </H4> 
+
+<H5>NOTE</H5>: Given slots are represented with integers. So the 4 given slots are mapped with the following numbers
+ *  1 ==> [6,9] Slot
+ *  2 ==> [9,13] Slot
+ *  3 ==> [16,19] Slot
+ *  4 ==> [19, 23] Slot
+ 
+ 
+The api exposes one end point #GetListOfAssignedVehicles, which returns a list of Vehicles which will deliver the order given in as input.
+  to access the endpoing, make a <H5>POST REQUEST</H5> at the following URL if running locally.
+  <H5>localhost:8081/cart/3<H5>. where 3 is the slot number and "/cart" triggers the api. 
+  
+  The body to be sent should be of the following format:
+  
+  {
+    "submittedOrderRequestList": [
+        {
+            "orderId" : "1",
+            "orderWeight": "30"
+        },
+         {
+            "orderId" : "2",
+            "orderWeight": "10"
+        },
+         {
+            "orderId" : "3",
+            "orderWeight": "15"
+        },
+         {
+            "orderId" : "4",
+            "orderWeight": "5"
+        }
+    ]
+}
+
+where <H5>submittedOrderRequest</H5> holds the list of order details.
