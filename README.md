@@ -90,5 +90,20 @@ And, the expected output is
 
 where **VehicleAssignedList** holds the list of vehicles which are assigned with the OrderId. 
 
+### DATABASE STRUCTURE
+
+There are 3 repositories created for this problem
+* Vehicle Repository
+  * Vehicle Repository stores VehicleEntity object/Document, and it has the following parameters.
+    * vehicleType (String)
+    * maxWeightAllowd (Integer)
+    * ListOfAvailableSlots (List<Integer>)
+	
+  * This Repository is populated when the Server starts.
+  
+  
+* Order Repository
+* Slot Repository
+
 
 
