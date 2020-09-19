@@ -28,26 +28,27 @@ The api exposes one end point #GetListOfAssignedVehicles, which returns a list o
   <mark>localhost:8081/cart/3</mark>. where 3 is the slot number and "/cart" triggers the api. 
   
   The body to be sent should be of the following format:
-  
+  ```python
   {    
     "submittedOrderRequestList": [  
 	{  
-	*"orderId" : "1",  
-	*"orderWeight": "30"  
+	"orderId" : "1",  
+	"orderWeight": "30"  
 	},  
 	{  
-	*"orderId" : "2",  
-	*"orderWeight": "10"  
+	"orderId" : "2",  
+	"orderWeight": "10"  
 	},  
 	{  
-	*"orderId" : "3",  
-	*"orderWeight": "15"  
+	"orderId" : "3",  
+	"orderWeight": "15"  
 	},  
 	{  
-	*"orderId" : "4",  
-	*"orderWeight": "5"  
+	"orderId" : "4",  
+	"orderWeight": "5"  
 	}  
     ]    
-}    
+}   
+```
 
 where <mark>submittedOrderRequest</mark> holds the list of order details.
