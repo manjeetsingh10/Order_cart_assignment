@@ -120,8 +120,8 @@ To approach this problem I have used **0/1 KnapSack** Algorithm.
 4) Repeat **Step 3** untill all orders are assigned
 5) Return list of vehicles which are assigned.
 
-Time Complexity: O(V * N): as We Check Each vehicle with every order to check if it can accomodate it
-space Complexity: O(N), as we store the order id in HashSet
+* Time Complexity: O(V * N): as We Check Each vehicle with every order to check if it can accomodate it
+* Space Complexity: O(N), as we store the order id in HashSet
 
 Where **V** is the number of available vehicles. I
 Where **N** is the size or number of given orders
