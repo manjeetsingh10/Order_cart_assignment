@@ -7,7 +7,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+/**
+ * DUMMY IMPLEMENTATION OF REPOSITARY SERVICE WHICH PROVIDES HARD CODED VALUES.
+ *
+ */
+
+//@Service
 public class RepositoryServiceDummyImpl implements RepositoryService {
 
   @Override
@@ -16,7 +21,7 @@ public class RepositoryServiceDummyImpl implements RepositoryService {
   }
 
   @Override
-  public List<VehicleDto> getListOfVehicle(Integer slotKey) {
+  public List<VehicleDto> getListOfVehicles(Integer slotKey) {
     List<VehicleDto> returnList = new ArrayList<>();
     int n = 5;
     String[] type = {"bike", "bike", "bike", "scooter", "scooter"};

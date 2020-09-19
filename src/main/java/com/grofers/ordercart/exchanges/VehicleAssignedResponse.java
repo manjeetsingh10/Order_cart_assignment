@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VehicleAssignedList {
+public class VehicleAssignedResponse {
   List<VehicleAssigned> vehicleAssignedList;
 }

@@ -1,7 +1,7 @@
 package com.grofers.ordercart.controller;
 
 import com.grofers.ordercart.exchanges.SubmittedOrderRequest;
-import com.grofers.ordercart.exchanges.VehicleAssignedList;
+import com.grofers.ordercart.exchanges.VehicleAssignedResponse;
 import com.grofers.ordercart.services.OrderCartService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,14 @@ public class GrofersController {
   @Autowired
   OrderCartService cartService;
 
-  // write post mapping
+  /**
+   *
+   * @param slotKey: slot for which vehicles need to be assigned.
+   * @param submittedRequest: list of order details submitted.
+   * @return: vehicles assigned at a given slot.
+   */
   @PostMapping("/{slotKey}")
-  public ResponseEntity<VehicleAssignedList> getListOfAssignedVehicles(
+  public ResponseEntity<VehicleAssignedResponse> getListOfAssignedVehicles(
           @PathVariable Integer slotKey,
           @RequestBody SubmittedOrderRequest submittedRequest) {
 

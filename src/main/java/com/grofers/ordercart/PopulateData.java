@@ -22,7 +22,7 @@ import java.util.List;
 
 @Component
 @Log4j2
-public class MyRunner implements CommandLineRunner {
+public class PopulateData implements CommandLineRunner {
 
   @Autowired
   VehicleRepository vehicleRepository;

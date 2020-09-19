@@ -4,15 +4,17 @@ import com.grofers.ordercart.dto.VehicleDto;
 import com.grofers.ordercart.exchanges.OrderRequest;
 import com.grofers.ordercart.exchanges.SubmittedOrderRequest;
 import com.grofers.ordercart.exchanges.VehicleAssigned;
-import com.grofers.ordercart.exchanges.VehicleAssignedList;
+import com.grofers.ordercart.exchanges.VehicleAssignedResponse;
 import com.grofers.ordercart.repositaryservices.RepositoryService;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import lombok.extern.log4j.Log4j2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 @Log4j2
@@ -22,28 +24,34 @@ public class OrderCartServiceImpl implements OrderCartService{
   @Autowired
   RepositoryService repositoryService;
 
-  // Set that stores the Id of the order, when Vehicle for delivery is assigned.
+  // hashset which is updated when an order is assigned with a vehicle.
   private HashSet<Integer> orderComplete;
   final int MAX_WEIGHT_ALLOWED_IN_SLOT = 100;
 
 
+  /**
+   *
+   * @param slotKey:
+   * @param orderRequest: given list of order details as input from the user
+   * @return VehicleAssignedResponse obj, which contains list of vehicles assigned for the given set of orders.
+   */
   @Override
-  public VehicleAssignedList getListOfVehiclesAssigned(Integer slotKey, SubmittedOrderRequest orderRequest) {
+  public VehicleAssignedResponse getListOfVehiclesAssigned(Integer slotKey, SubmittedOrderRequest orderRequest) {
 
     // initialize variables
-    VehicleAssignedList response = new VehicleAssignedList();
+    VehicleAssignedResponse response = new VehicleAssignedResponse();
     List<VehicleAssigned> vehicleAssignedList = new ArrayList<VehicleAssigned>();
     orderComplete = new HashSet<Integer>();
     int partnerId = 1;
 
     // get required lists from repository
-    List<VehicleDto> availableVehicleList = repositoryService.getListOfVehicle(slotKey);
+    List<VehicleDto> availableVehicleList = repositoryService.getListOfVehicles(slotKey);
     List<OrderRequest> costumerOrderList = orderRequest.getSubmittedOrderRequestList();
 
     // TODO: write a function to get Slot details, like maximum capacity in a slot.
 
     for (VehicleDto vehicle : availableVehicleList) {
-      List<Integer> assignedOrderId = knapSack(vehicle.getMaxWeightAllowed(), costumerOrderList, new ArrayList<Integer>(), 0);
+      List<Integer> assignedOrderId = knapsack(vehicle.getMaxWeightAllowed(), costumerOrderList, new ArrayList<Integer>(), 0);
       // if costumer id list is not empty, this means that the order in the list has been assigned.
       if (assignedOrderId.size() > 0) {
         VehicleAssigned vehicleAssigned = VehicleAssigned.builder()
@@ -55,7 +63,6 @@ public class OrderCartServiceImpl implements OrderCartService{
         partnerId++;
         vehicleAssignedList.add(vehicleAssigned);
       }
-
       // check if all the orders has been assigned, if yes, we can break out of the look
       if (orderComplete.size() == costumerOrderList.size()) {
         break;
@@ -66,30 +73,37 @@ public class OrderCartServiceImpl implements OrderCartService{
     return response;
   }
 
-  private List<Integer> knapSack(Integer capacityOfVehicle, List<OrderRequest> orderList, List<Integer> costumerIdList, int pointer) {
+  /**
+   * APPROACH USING 0/1 knapsack.
+   * @param capacityOfVehicle: max weight a vehicle can carry.
+   * @param orderList: list of orders given as input from the user.
+   * @param orderIdList: List of orderId which have been assigned with a vehicle.
+   * @param pointer: to itetrate over the orderlist inorder to fetch details.
+   * @return: list containing Order Ids, which have been assigned to the given vehicle.
+   */
+  private List<Integer> knapsack(Integer capacityOfVehicle, List<OrderRequest> orderList, List<Integer> orderIdList, int pointer) {
     // edge case
     if (capacityOfVehicle == 0 || pointer >= orderList.size()) {
-      return costumerIdList;
+      return orderIdList;
     }
 
     int orderWeight = getWeightOfOrder(pointer, orderList);
 
     // check if order weight is within the capacity && order Id not already assigned
     if (orderWeight <= capacityOfVehicle && !checkIfOrderIdPresentInSet(getOrderId(pointer, orderList))) {
-      costumerIdList.add(getOrderId(pointer, orderList)); // add order id to id list
+      orderIdList.add(getOrderId(pointer, orderList)); // add order id to id list
       orderComplete.add(getOrderId(pointer, orderList)); // add order id to hash set
 
       //TODO: ROMOVE BELOW LINE
       log.warn("remaining capacity is {}", capacityOfVehicle );
-      return knapSack(capacityOfVehicle - orderWeight, orderList, costumerIdList, ++pointer);
+      return knapsack(capacityOfVehicle - orderWeight, orderList, orderIdList, ++pointer);
     }
     else {
       // if order weight is greater than capacity
-      return knapSack(capacityOfVehicle, orderList, costumerIdList, ++pointer);
+      return knapsack(capacityOfVehicle, orderList, orderIdList, ++pointer);
     }
 
   }
-
 
 
   // HELPER FUNCTIONS
