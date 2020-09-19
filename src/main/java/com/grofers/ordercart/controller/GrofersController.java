@@ -29,7 +29,11 @@ public class GrofersController {
   public ResponseEntity<VehicleAssignedResponse> getListOfAssignedVehicles(
           @PathVariable Integer slotKey,
           @RequestBody SubmittedOrderRequest submittedRequest) {
+    VehicleAssignedResponse assignedVehicles = cartService.getListOfVehiclesAssigned(slotKey, submittedRequest);
 
+    if (assignedVehicles == null){
+      return ResponseEntity.badRequest().body(null);
+    }
     return ResponseEntity.ok().body(cartService.getListOfVehiclesAssigned(slotKey, submittedRequest));
   }
 

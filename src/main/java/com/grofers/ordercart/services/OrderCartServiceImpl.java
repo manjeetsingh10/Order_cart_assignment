@@ -37,6 +37,8 @@ public class OrderCartServiceImpl implements OrderCartService{
    */
   @Override
   public VehicleAssignedResponse getListOfVehiclesAssigned(Integer slotKey, SubmittedOrderRequest orderRequest) {
+    // check if given object is null
+    if (orderRequest.getSubmittedOrderRequestList() == null) return null;
 
     // initialize variables
     VehicleAssignedResponse response = new VehicleAssignedResponse();
