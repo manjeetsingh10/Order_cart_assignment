@@ -124,7 +124,7 @@ There are 2 repositories created for this problem
 To approach this problem I have used **0/1 KnapSack** Algorithm.
 
 #### ALGORITHM
-1) Get List of vehicles from the data baseb which are availabel at the given slot.
+1) Get List of vehicles available at the given slot from the database.
 2) Get List of Orders which needs to be assigned to the vehicles
 3) Iterate over each vehicle and and check if it can deliver any order, If yes, we update the HashSet which is used to keep track of **Orders Assigned**
 4) Repeat **Step 3** untill all orders are assigned
