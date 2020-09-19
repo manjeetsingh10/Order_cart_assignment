@@ -5,7 +5,10 @@ import com.grofers.ordercart.exchanges.SubmittedOrderRequest;
 
 import java.util.List;
 
-// get list of vehicles from db, by checking slot
+/**
+ * Contract of the Repository service available
+ *
+ */
 public interface RepositoryService {
   void saveOrders(Integer slotKey,  SubmittedOrderRequest submittedOrderRequest);
   List<VehicleDto> getListOfVehicles(Integer slotKey);

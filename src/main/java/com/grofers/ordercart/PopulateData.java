@@ -48,6 +48,7 @@ public class PopulateData implements CommandLineRunner {
     }
 
     // print records present in db on the log.
+    log.warn("Total Vehicles in Vehicle Repository {}", givenListOfVehicles.size());
     vehicleRepository.findAll().forEach((vehicle) -> {
       log.warn("{}", vehicle);
     });

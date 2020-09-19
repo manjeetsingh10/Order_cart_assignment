@@ -12,6 +12,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+/**
+ * Mongo Document that stores information about vehicles.
+ *
+ */
+
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

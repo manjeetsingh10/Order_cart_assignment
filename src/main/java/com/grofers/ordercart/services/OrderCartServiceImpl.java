@@ -25,7 +25,7 @@ public class OrderCartServiceImpl implements OrderCartService{
   RepositoryService repositoryService;
 
   // hashset which is updated when an order is assigned with a vehicle.
-  private HashSet<Integer> orderComplete;
+  private HashSet<Integer> orderAssigned;
   final int MAX_WEIGHT_ALLOWED_IN_SLOT = 100;
 
 
@@ -41,30 +41,31 @@ public class OrderCartServiceImpl implements OrderCartService{
     // initialize variables
     VehicleAssignedResponse response = new VehicleAssignedResponse();
     List<VehicleAssigned> vehicleAssignedList = new ArrayList<VehicleAssigned>();
-    orderComplete = new HashSet<Integer>();
+    orderAssigned = new HashSet<Integer>();
     int partnerId = 1;
 
     // get required lists from repository
     List<VehicleDto> availableVehicleList = repositoryService.getListOfVehicles(slotKey);
     List<OrderRequest> costumerOrderList = orderRequest.getSubmittedOrderRequestList();
 
-    // TODO: write a function to get Slot details, like maximum capacity in a slot.
-
+    // iterate for each vehicle and see if it can deliver the order
     for (VehicleDto vehicle : availableVehicleList) {
-      List<Integer> assignedOrderId = knapsack(vehicle.getMaxWeightAllowed(), costumerOrderList, new ArrayList<Integer>(), 0);
-      // if costumer id list is not empty, this means that the order in the list has been assigned.
-      if (assignedOrderId.size() > 0) {
+      List<Integer> assignedOrderIdList = knapsack(vehicle.getMaxWeightAllowed(), costumerOrderList, new ArrayList<Integer>(), 0);
+
+      // if #assignedOrderList is not empty, that the vehicle has been assigned with some orders.
+      if (assignedOrderIdList.size() > 0) {
         VehicleAssigned vehicleAssigned = VehicleAssigned.builder()
                 .vehicleType(vehicle.getVehicleType())
-                .listOrderIdsAssigned(assignedOrderId)
+                .listOrderIdsAssigned(assignedOrderIdList)
                 .deliveryPartnerId(partnerId)
                 .build();
 
         partnerId++;
         vehicleAssignedList.add(vehicleAssigned);
       }
-      // check if all the orders has been assigned, if yes, we can break out of the look
-      if (orderComplete.size() == costumerOrderList.size()) {
+
+      // check if all the orders has been assigned, if yes, we can break out of the loop.
+      if (orderAssigned.size() == costumerOrderList.size()) {
         break;
       }
     }
@@ -89,13 +90,11 @@ public class OrderCartServiceImpl implements OrderCartService{
 
     int orderWeight = getWeightOfOrder(pointer, orderList);
 
-    // check if order weight is within the capacity && order Id not already assigned
+    // check if order weight is within the capacity && order Id not already assigned to a vehicle
     if (orderWeight <= capacityOfVehicle && !checkIfOrderIdPresentInSet(getOrderId(pointer, orderList))) {
       orderIdList.add(getOrderId(pointer, orderList)); // add order id to id list
-      orderComplete.add(getOrderId(pointer, orderList)); // add order id to hash set
+      orderAssigned.add(getOrderId(pointer, orderList)); // add order id to hash set
 
-      //TODO: ROMOVE BELOW LINE
-      log.warn("remaining capacity is {}", capacityOfVehicle );
       return knapsack(capacityOfVehicle - orderWeight, orderList, orderIdList, ++pointer);
     }
     else {
@@ -111,10 +110,10 @@ public class OrderCartServiceImpl implements OrderCartService{
   /**
    *
    * @param orderId: id of given order
-   * @return: True if present, else False.
+   * @return: True if orderId present in #orderAssigned HashSet, else False.
    */
   private boolean checkIfOrderIdPresentInSet(Integer orderId) {
-    if (orderComplete.contains(orderId)) {
+    if (orderAssigned.contains(orderId)) {
       return true;
     }
     return false;
@@ -123,8 +122,8 @@ public class OrderCartServiceImpl implements OrderCartService{
   /**
    *
    * @param index: index of order in the given list
-   * @param orderList: given order list as input in the request
-   * @return: ID of order persent at the given index.
+   * @param orderList: given order list as input in POST request
+   * @return: orderId of order present at the given index.
    */
   private int getOrderId(Integer index, List<OrderRequest> orderList) {
     return orderList.get(index).getOrderId();
@@ -133,8 +132,8 @@ public class OrderCartServiceImpl implements OrderCartService{
   /**
    *
    * @param index: index of order in the given list.
-   * @param orderList: given order list as input in the request.
-   * @return: weight of the order at the given index.
+   * @param orderList: given order list as input in POST request.
+   * @return: weight of the order present at the given index.
    */
   private int getWeightOfOrder(Integer index, List<OrderRequest> orderList) {
     return orderList.get(index).getOrderWeight();

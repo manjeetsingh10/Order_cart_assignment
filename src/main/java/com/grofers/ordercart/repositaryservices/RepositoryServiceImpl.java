@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * IMPLEMENTATION OF REPOSITORY SERVICE
+ *
+ * NOTE: saveOrders function is not implemented, but can be done in future requirements inorder to get #Order details
+ */
 @Service
 public class RepositoryServiceImpl implements RepositoryService{
 
@@ -36,7 +41,7 @@ public class RepositoryServiceImpl implements RepositoryService{
     for (VehicleEntity vehicleEntity : vehicleRepository.findAll()) {
       // check if slot present in #availabelSlotList in the entity obj
       if (isSlotPresent(slotKey, vehicleEntity)) {
-        availableVehiclesAtGivenSlot.add(mapEntityObjectToDtoObject(vehicleEntity));
+        availableVehiclesAtGivenSlot.add(modelMapper(vehicleEntity));
       }
     }
     return availableVehiclesAtGivenSlot;
@@ -60,7 +65,7 @@ public class RepositoryServiceImpl implements RepositoryService{
    * @param vehicleEntity: entity object
    * @return: converts entity object to Dto object.
    */
-  private VehicleDto mapEntityObjectToDtoObject(VehicleEntity vehicleEntity) {
+  private VehicleDto modelMapper(VehicleEntity vehicleEntity) {
     return modelMapper.map(vehicleEntity, VehicleDto.class);
   }
 }
