@@ -14,6 +14,12 @@ Truck capacity - 100 kg per trip
 
 Each slot can take orders with an overall max weight of 100 kg. There are no trucks available in the morning slot (6-9 hours) and there are no scooters and bikes available in the evening slot (19-23 hours). All vehicle types are available for the other two slots (9-13,16-19 hours). You can’t order more than 1 truck, 3 bikes, 2 scooters a day. Also, the vehicles’ capacity should be used optimally.
 
+## TECH STACK USED
+* Programming Language: Java
+* Framework: Springboot
+* BuildTool: Maven
+* DataBase: MongoDB
+
 ## MINI DOCUMENTATION 
 
 <mark>NOTE</mark>: Given slots are represented with integers. So the 4 given slots are mapped with the following numbers
@@ -78,3 +84,6 @@ And, the expected output is
 ```
 
 where **VehicleAssignedList** holds the list of vehicles which are assigned with the OrderId. 
+
+
+
