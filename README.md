@@ -16,7 +16,7 @@ Each slot can take orders with an overall max weight of 100 kg. There are no tru
 
 <H4> MINI DOCUMENTATION </H4> 
 
-<H5>NOTE</H5>: Given slots are represented with integers. So the 4 given slots are mapped with the following numbers
+<mark>NOTE</mark>: Given slots are represented with integers. So the 4 given slots are mapped with the following numbers
  *  1 ==> [6,9] Slot
  *  2 ==> [9,13] Slot
  *  3 ==> [16,19] Slot
