@@ -109,5 +109,28 @@ There are 3 repositories created for this problem
 
 * **Slot Repository**
 
+### APPROACH
+
+To approach this problem I have used **0/1 KnapSack** Algorithm.
+
+**ALGORITHM**
+1) Get List of vehicles from the data baseb which are availabel at the given slot.
+2) Get List of Orders which needs to be assigned to the vehicles
+3) Iterate over each vehicle and and check if it can deliver any order, If yes, we update the HashSet which is used to keep track of **Orders Assigned**
+4) Repeat **Step 3** untill all orders are assigned
+5) Return list of vehicles which are assigned.
+
+Time Complexity: O(V * N): as We Check Each vehicle with every order to check if it can accomodate it
+space Complexity: O(N), as we store the order id in HashSet
+
+Where **V** is the number of available vehicles. I
+Where **N** is the size or number of given orders
+
+#### TRADEOFF
+There is one trade off using **0/1 Knapsack** approach:
+* since this is a 0/1 knapsace, if a vehicle with Enough capacity is Not present, then that order can go un attended
+For Exampls: for Solt 1 (6, 9), if we get an Order for 100kg, and since we don't have a truck with us in the morning slot, this order can go unattended.
+* This bug will be fixed in the next iteration of the code.
+
 
 
