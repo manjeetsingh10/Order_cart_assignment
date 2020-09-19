@@ -138,8 +138,8 @@ Where **N** is the size or number of given orders
 
 #### TRADEOFF
 There is one trade off using **0/1 Knapsack** approach:
-* since this is a 0/1 knapsace, if a vehicle with Enough capacity is Not present, then that order can go un attended
-For Exampls: for Solt 1 (6, 9), if we get an Order for 100kg, and since we don't have a truck with us in the morning slot, this order can go unattended.
+* since this is a 0/1 knapsace, if a vehicle with Enough capacity is Not present, then that order can go un attended<br/>
+For Example: for Solt 1 (6, 9), if we get an Order for 100kg, and since we don't have a truck with us in the morning slot, this order can go unattended.
 * This bug will be fixed in the next iteration of the code.
 
 
