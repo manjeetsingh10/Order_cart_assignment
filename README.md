@@ -51,7 +51,7 @@ The api exposes one end point **GetListOfAssignedVehicles**, which returns a lis
 }   
 ```
 
-where <**submittedOrderRequest** holds the list of order details.
+where **submittedOrderRequest** holds the list of order details.
 
 And, the expected output is
 ```python
