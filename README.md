@@ -133,7 +133,7 @@ To approach this problem I have used **0/1 KnapSack** Algorithm.
 * Time Complexity: **O(V * N)**: as We Check Each vehicle with every order to check if it can accomodate it
 * Space Complexity: **O(N)**: as we store the order id in HashSet
 
-Where **V** is the number of available vehicles.<br\>
+Where **V** is the number of available vehicles.<br/>
 Where **N** is the size or number of given orders
 
 #### TRADEOFF
