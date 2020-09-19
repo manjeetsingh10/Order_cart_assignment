@@ -102,7 +102,7 @@ where **VehicleAssignedList** holds the list of vehicles which are assigned with
 
 ### DATABASE STRUCTURE
 
-There are 3 repositories created for this problem
+There are 2 repositories created for this problem
 * **Vehicle Repository**
   * Vehicle Repository stores VehicleEntity object/Document, and it has the following properties.
     * vehicleType (String)
@@ -117,7 +117,6 @@ There are 3 repositories created for this problem
     * orderId  (Integer)
     * orderWeight (Integer)
 
-* **Slot Repository**
 
 ### APPROACH
 
