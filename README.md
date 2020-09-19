@@ -24,7 +24,7 @@ Each slot can take orders with an overall max weight of 100 kg. There are no tru
  
  
 The api exposes one end point **GetListOfAssignedVehicles**, which returns a list of Vehicles which will deliver the order given in as input.
-  to access the endpoing, make a **POST REQUEST** at the following URL if running locally.
+  to access the endpoint, make a **POST REQUEST** at the following URL if running locally.
   **localhost:8081/cart/3**. where **3** is the slot number and **/cart** triggers the api. 
   
   The body to be sent should be of the following format:
