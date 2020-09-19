@@ -1,7 +1,7 @@
 # Order_cart_assignment
 Assignment
 
-- [PROBLEM STATEMENT](#problem statement)
+- [PROBLEM STATEMENT](#problem-statement)
 - [DOCUMENTATION](#documentation)
   * [TECH STACK USED](#tech stack used)
     + [Sub-sub-heading](#sub-sub-heading-1)
