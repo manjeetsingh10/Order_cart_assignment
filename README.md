@@ -15,7 +15,7 @@ Truck capacity - 100 kg per trip
 Each slot can take orders with an overall max weight of 100 kg. There are no trucks available in the morning slot (6-9 hours) and there are no scooters and bikes available in the evening slot (19-23 hours). All vehicle types are available for the other two slots (9-13,16-19 hours). You can’t order more than 1 truck, 3 bikes, 2 scooters a day. Also, the vehicles’ capacity should be used optimally.
 
 
-## MINI DOCUMENTATION 
+## DOCUMENTATION 
 
 ### TECH STACK USED
 * Programming Language: Java
