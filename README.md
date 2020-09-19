@@ -9,7 +9,8 @@ Assignment
   * [API ENDPOINT](#api-endpoint)
   * [DATABASE STRUCTURE](database-structure)
   * [APPROACH](#approach)
-  * [TRADEOFF](#tradeoff)
+    * [ALGORITHM](#algorithm)
+    * [TRADEOFF](#tradeoff)
 	
 ## PROBLEM STATEMENT
 
@@ -122,7 +123,7 @@ There are 2 repositories created for this problem
 
 To approach this problem I have used **0/1 KnapSack** Algorithm.
 
-**ALGORITHM**
+#### ALGORITHM
 1) Get List of vehicles from the data baseb which are availabel at the given slot.
 2) Get List of Orders which needs to be assigned to the vehicles
 3) Iterate over each vehicle and and check if it can deliver any order, If yes, we update the HashSet which is used to keep track of **Orders Assigned**
