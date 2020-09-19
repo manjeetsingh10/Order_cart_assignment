@@ -31,8 +31,10 @@ Each slot can take orders with an overall max weight of 100 kg. There are no tru
  *  4 ==> [19, 23] Slot
 
 2) The variables in this program were named using Java Naming Conventions. (camel case) 
+
+### API ENDPOINT
  
-The api exposes one end point **GetListOfAssignedVehicles**, which returns a list of Vehicles which will deliver the order given in as input.
+**POST:** The api exposes one end point **GetListOfAssignedVehicles**, which returns a list of Vehicles which will deliver the order given in as input.
   to access the endpoint, make a **POST REQUEST** at the following URL if running locally.
   **localhost:8081/cart/3**. where **3** is the slot number and **/cart** triggers the api. 
   
