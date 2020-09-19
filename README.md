@@ -3,12 +3,12 @@ Assignment
 
 - [PROBLEM STATEMENT](#problem-statement)
 - [DOCUMENTATION](#documentation)
-  * [TECH STACK USED](#tech stack used)
-    + [Sub-sub-heading](#sub-sub-heading-1)
-- [Heading](#heading-2)
-  * [Sub-heading](#sub-heading-2)
-    + [Sub-sub-heading](#sub-sub-heading-2)
-
+  * [TECH STACK USED](#tech-stack-used)
+  * [NOTE](#note)
+  * [API ENDPOINT](#api-endpoint)
+  * [DATABASE STRUCTURE](database-structure)
+  * [APPROACH](#approach)
+  * [TRADEOFF](#tradeoff)
 	
 ## PROBLEM STATEMENT
 
@@ -32,7 +32,7 @@ Each slot can take orders with an overall max weight of 100 kg. There are no tru
 * BuildTool: Maven
 * DataBase: MongoDB
 
-#### NOTE: 
+### NOTE: 
 1) Given slots are represented with integers. So the 4 given slots are mapped with the following numbers
  *  1 ==> [6,9] Slot
  *  2 ==> [9,13] Slot
