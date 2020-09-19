@@ -31,22 +31,22 @@ The api exposes one end point #GetListOfAssignedVehicles, which returns a list o
   
   {    
     "submittedOrderRequestList": [  
-          {  
-              "orderId" : "1",  
-              "orderWeight": "30"  
-          },  
-           {  
-              "orderId" : "2",  
-              "orderWeight": "10"  
-          },  
-           {  
-              "orderId" : "3",  
-              "orderWeight": "15"  
-          },  
-           {  
-              "orderId" : "4",  
-              "orderWeight": "5"  
-          }  
+										{  
+														"orderId" : "1",  
+														"orderWeight": "30"  
+										},  
+											{  
+														"orderId" : "2",  
+														"orderWeight": "10"  
+										},  
+											{  
+														"orderId" : "3",  
+														"orderWeight": "15"  
+										},  
+											{  
+														"orderId" : "4",  
+														"orderWeight": "5"  
+										}  
     ]    
 }    
 
