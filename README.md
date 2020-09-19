@@ -29,8 +29,8 @@ The api exposes one end point #GetListOfAssignedVehicles, which returns a list o
   
   The body to be sent should be of the following format:
   ```python
-  {    
-    "submittedOrderRequestList": [  
+{    
+	"submittedOrderRequestList": [  
 		{  
 			"orderId" : "1",  
 			"orderWeight": "30"  
@@ -47,7 +47,7 @@ The api exposes one end point #GetListOfAssignedVehicles, which returns a list o
 			"orderId" : "4",  
 			"orderWeight": "5"  
 		}  
-    ]    
+	]    
 }   
 ```
 
