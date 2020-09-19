@@ -27,7 +27,7 @@ The api exposes one end point **GetListOfAssignedVehicles**, which returns a lis
   to access the endpoint, make a **POST REQUEST** at the following URL if running locally.
   **localhost:8081/cart/3**. where **3** is the slot number and **/cart** triggers the api. 
   
-  The body to be sent should be of the following format:
+  The body to be sent with the request should be of the following format:
   ```python
 {    
 	"submittedOrderRequestList": [  
@@ -51,7 +51,7 @@ The api exposes one end point **GetListOfAssignedVehicles**, which returns a lis
 }   
 ```
 
-where <mark>submittedOrderRequest</mark> holds the list of order details.
+where <**submittedOrderRequest** holds the list of order details.
 
 And, the expected output is
 ```python
@@ -77,4 +77,4 @@ And, the expected output is
 }
 ```
 
-where <mark>VehicleAssignedList</mark> holds the list of vehicles which are assigned with the OrderId. 
+where **VehicleAssignedList** holds the list of vehicles which are assigned with the OrderId. 
