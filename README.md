@@ -52,3 +52,29 @@ The api exposes one end point #GetListOfAssignedVehicles, which returns a list o
 ```
 
 where <mark>submittedOrderRequest</mark> holds the list of order details.
+
+And, the expected output is
+```python
+{
+    "vehicleAssignedList": [
+        {
+            "vehicleType": "bike",
+            "deliveryPartnerId": 1,
+            "listOrderIdsAssigned": [
+                1
+            ]
+        },
+        {
+            "vehicleType": "bike",
+            "deliveryPartnerId": 2,
+            "listOrderIdsAssigned": [
+                2,
+                3,
+                4
+            ]
+        }
+    ]
+}
+```
+
+where <mark>VehicleAssignedList</mark> holds the list of vehicles which are assigned with the OrderId. 
