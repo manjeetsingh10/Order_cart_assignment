@@ -29,25 +29,25 @@ The api exposes one end point #GetListOfAssignedVehicles, which returns a list o
   
   The body to be sent should be of the following format:
   
-  {
-    "submittedOrderRequestList": [
-        {
-            "orderId" : "1",
-            "orderWeight": "30"
-        },
-         {
-            "orderId" : "2",
-            "orderWeight": "10"
-        },
-         {
-            "orderId" : "3",
-            "orderWeight": "15"
-        },
-         {
-            "orderId" : "4",
-            "orderWeight": "5"
-        }
-    ]
-}
+  {    
+    "submittedOrderRequestList": [  
+        {  
+            "orderId" : "1",  
+            "orderWeight": "30"  
+        },  
+         {  
+            "orderId" : "2",  
+            "orderWeight": "10"  
+        },  
+         {  
+            "orderId" : "3",  
+            "orderWeight": "15"  
+        },  
+         {  
+            "orderId" : "4",  
+            "orderWeight": "5"  
+        }  
+    ]    
+}    
 
 where <mark>submittedOrderRequest</mark> holds the list of order details.
