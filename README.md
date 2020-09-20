@@ -48,7 +48,7 @@ The API is hosted as a service on AWS ec2 instance, and exposes the following en
 
 **POST:** The api exposes one end point **GetListOfAssignedVehicles**, which returns a list of Vehicles that will deliver the orders given in as input.
   To access the endpoint, make a **POST REQUEST** at the following URL<br/>
-  **http://ec2-13-233-115-66.ap-south-1.compute.amazonaws.com:8081/cart/3**. where **3** is the slot number and **/cart** triggers the api controller. 
+  **http://ec2-13-233-115-66.ap-south-1.compute.amazonaws.com:8081/cart/3**. where **3** is the slot number and **/cart** triggers the api controller.(Refer to NOTE section in Table of Contents for more details on how slots are represented.)
   
   #### NOTE:
   if tested locally by running the jar file, then the following URL needs to be entered **localhost:8081/cart/3**
