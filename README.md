@@ -46,8 +46,8 @@ Each slot can take orders with an overall max weight of 100 kg. There are no tru
 ### API ENDPOINT
 The API is hosted as a service on AWS ec2 instance, and exposes the following endpoint:
 
-**POST:** The api exposes one end point **GetListOfAssignedVehicles**, which returns a list of Vehicles which will deliver the order given in as input.
-  to access the endpoint, make a **POST REQUEST** at the following URL<br/>
+**POST:** The api exposes one end point **GetListOfAssignedVehicles**, which returns a list of Vehicles that will deliver the orders given in as input.
+  To access the endpoint, make a **POST REQUEST** at the following URL<br/>
   **http://ec2-13-233-115-66.ap-south-1.compute.amazonaws.com:8081/cart/1**. where **3** is the slot number and **/cart** triggers the api. 
   
   #### NOTE:
