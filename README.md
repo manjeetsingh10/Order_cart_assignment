@@ -44,10 +44,14 @@ Each slot can take orders with an overall max weight of 100 kg. There are no tru
 2) The variables in this program were named using Java Naming Conventions. (camel case) 
 
 ### API ENDPOINT
- 
+The API is hosted as a service on AWS ec2 instance, and exposes the following endpoint:
+
 **POST:** The api exposes one end point **GetListOfAssignedVehicles**, which returns a list of Vehicles which will deliver the order given in as input.
-  to access the endpoint, make a **POST REQUEST** at the following URL if running locally.
-  **localhost:8081/cart/3**. where **3** is the slot number and **/cart** triggers the api. 
+  to access the endpoint, make a **POST REQUEST** at the following URL
+  **http://ec2-13-233-115-66.ap-south-1.compute.amazonaws.com:8081/cart/1**. where **3** is the slot number and **/cart** triggers the api. 
+  
+  #### NOTE:
+  if tested locally by running the jar file, then the following URL needs to be entered **localhost:8081/cart/3**
   
   The body to be sent with the request should be of the following format:
   ```python
